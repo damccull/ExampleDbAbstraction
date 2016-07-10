@@ -10,6 +10,7 @@ namespace ExampleDbAbstraction.Repository {
         public int Id { get; set; }
         public string Route { get; set; }
         public float Hours { get; set; }
+        public int AircraftId { get; set; }
 
         public override string ToString() {
             return $"ID: {Id}\tROUTE: {Route}\tHOURS {Hours.ToString("N1")}";

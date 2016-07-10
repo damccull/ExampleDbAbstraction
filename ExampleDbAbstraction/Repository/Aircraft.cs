@@ -9,5 +9,9 @@ namespace ExampleDbAbstraction.Repository {
         public int Id { get; set; }
         public string TailNumber { get; set; }
         public string Model { get; set; }
+
+        public override string ToString() {
+            return $"Tail Number: {TailNumber}\tModel {Model}";
+        }
     }
 }
