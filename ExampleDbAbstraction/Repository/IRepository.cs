@@ -13,7 +13,9 @@ namespace ExampleDbAbstraction.Repository {
 
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
-        IEnumerable<TEntity> Find(Func<TEntity, bool> predicate);
+
+        //NOTE: See note in POCO.Repository
+        //IEnumerable<TEntity> Find(Func<TEntity, bool> predicate);
 
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
