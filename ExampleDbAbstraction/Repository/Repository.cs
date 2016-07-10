@@ -40,6 +40,7 @@ namespace ExampleDbAbstraction.Repository {
         /// <summary>
         /// Return all entities that match the predicate.
         /// NOTE: This can be stupid-hard to implement. So...don't unless you need it?
+        /// A simpler option is to create specialized "find" or "get" methods for the info you need.
         /// </summary>
         /// <param name="predicate">The LINQ query to filter on.</param>
         /// <returns></returns>

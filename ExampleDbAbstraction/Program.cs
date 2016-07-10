@@ -8,30 +8,9 @@ using System.Threading.Tasks;
 namespace ExampleDbAbstraction {
     class Program {
         static void Main(string[] args) {
-            //Instantiate a new FlightRepository. This will handle all Flight objects in the database. Here we 'inject' a new List<Flight>.
-            IFlightRepository context = new FlightRepository(new List<Flight>());
 
-            //Some basic flight routes
-            List<string> routes = new List<string> {
-                "KLAX - KLAX",
-                "KDEN - KLAX",
-                "KDEN - KATL",
-                "KATL - KDEN",
-                "KJFK - KDEN"
-            };
-            //Create a random number generator.
-            var rand = new Random();
 
-            //Create 10 flights with random routes and hours flown
-            for (int i = 0; i < 10; i++) {
-                var flight = new Flight {
-                    Id = i + 1,
-                    Route = routes[rand.Next(routes.Count)],
-                    Hours = Convert.ToSingle(rand.Next(8) + rand.NextDouble())
-                };
-                //Add the flight to the data store
-                context.Add(flight);
-            }
+            
 
             //This demo lists ALL the flights in the data store.
             Caption("GetAll()");
@@ -56,7 +35,7 @@ namespace ExampleDbAbstraction {
 
             //This demo lists ALL the flights in the data store again to show the missing flight removed in the previos demo.
             Caption($"{Environment.NewLine}GetAll() again to demonstrate Remove(). Note ID 2 missing.");
-            foreach (var flight in context.GetAll()) {
+            foreach (var flight in context.GetAll()) { 
                 Console.WriteLine(flight);
             }
 
