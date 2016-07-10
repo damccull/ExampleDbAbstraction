@@ -52,7 +52,7 @@ namespace ExampleDbAbstraction.Repository {
 
             var rand = new Random();
 
-            for (int i = 0; i < aircraft.Count; i++) {
+            for (int i = 0; i < 10; i++) {
                 work.Aircraft.Add(new Aircraft {
                     Id = i + 1,
                     Model = aircraft[rand.Next(aircraft.Count)],
@@ -67,7 +67,7 @@ namespace ExampleDbAbstraction.Repository {
             tailnumber.Append("N");
 
             var numCharsInTailNumber = randomNumberGenerator.Next(1, 5);
-            var numLettersInTailNumber = randomNumberGenerator.Next(2);
+            var numLettersInTailNumber = randomNumberGenerator.Next(3);
             if (numLettersInTailNumber >= numCharsInTailNumber) {
                 numLettersInTailNumber = numCharsInTailNumber - 1;
             }
@@ -82,7 +82,7 @@ namespace ExampleDbAbstraction.Repository {
                 }
                 tailnumber.Append(numToAppend.ToString());
 
-                if (i >= numCharsInTailNumber - (numLettersInTailNumber)) {
+                if (i > numCharsInTailNumber - (numLettersInTailNumber)) {
                     var tailLetter = (char)('A' + randomNumberGenerator.Next(26));
                     if (tailLetter == 'O' || tailLetter == 'I') {
                         tailLetter = (char)(tailLetter + 1);
