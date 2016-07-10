@@ -8,6 +8,6 @@ namespace ExampleDbAbstraction.Repository {
     public interface IUnitOfWork : IDisposable {
         IFlightRepository Flights { get; }
         IAircraftRepository Aircraft { get; }
-        int Complete();
+        int Save();
     }
 }
