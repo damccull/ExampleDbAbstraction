@@ -10,6 +10,15 @@ namespace ExampleDbAbstraction {
     class Program {
         static void Main(string[] args) {
 
+            //Here we specifically instantiate a particular implementation. It's appropriate here because you have to
+            //instantiate it at some point in the set up of your program or you'll never have a storage layer.
+            // NOTE: A unit of work should only be used for a single transaction to the storage layer, so this implementation
+            // could cause problems if you have to instantiate this all over the place in your app. A better approach
+            // would be to instantiate this ONE time in an Inversion of Control container like https://autofac.org/
+            // and then ask autofac for an instance of the unit of work every time you need one. It will hand you
+            // a new instance of the appropriate type, and you never instantiate it at all. This allows you to
+            // decouple the UnitOfWork class from your code almost entirely, because the rest of your code only depends on
+            // IUnitOfWork.
             var context = new UnitOfWork();
             DatabasePopulator.Populate(context);
 
