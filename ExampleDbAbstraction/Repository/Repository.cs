@@ -39,11 +39,13 @@ namespace ExampleDbAbstraction.Repository {
 
         /// <summary>
         /// Return all entities that match the predicate.
+        /// NOTE: This can be stupid-hard to implement. So...don't unless you need it?
         /// </summary>
         /// <param name="predicate">The LINQ query to filter on.</param>
         /// <returns></returns>
-        public IEnumerable<TEntity> Find(Func<TEntity, bool> predicate) {
-            return Context.Where(predicate);
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate) {
+            //return Context.Where(predicate);
+            throw new NotImplementedException("This is really hard to implement sometimes. So only do it if you need to I guess?");
         }
 
         /// <summary>
