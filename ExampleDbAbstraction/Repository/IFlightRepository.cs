@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExampleDbAbstraction.Repository;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +14,7 @@ namespace ExampleDbAbstraction.Repository {
     public interface IFlightRepository : IRepository<Flight> {
         //This method is only applicable to Flight objects, so it is defined here rather than in Repository.
         float GetTotalHours();
+
+        IEnumerable<Flight> FindByRoutePoint(string routePoint);
     }
 }
