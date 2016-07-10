@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ExampleDbAbstraction.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExampleDbAbstraction.Repository {
+namespace ExampleDbAbstraction.POCO.Repository {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class {
         //The generic allows this repository class to be a common ancestor for any
         //type in the database and this class should ONLY contain methods common to every type in the database.
@@ -38,6 +39,7 @@ namespace ExampleDbAbstraction.Repository {
         }
 
         /// <summary>
+        /// NOT IMPLEMENTED!
         /// Return all entities that match the predicate.
         /// NOTE: This can be stupid-hard to implement. So...don't unless you need it?
         /// A simpler option is to create specialized "find" or "get" methods for the info you need.

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ExampleDbAbstraction.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
-namespace ExampleDbAbstraction.Repository {
+namespace ExampleDbAbstraction.POCO.Repository {
     //This class is an implementation of IFlightRepository. It inherits from Repository<Flight> so that it can use all
     //of the general methods available to ALL repos as well as implements any FlightRepository-specific methods.
     //This class should be database-specific. In this case, because of inheritance on Repository<Flight>, it uses an
@@ -18,6 +20,15 @@ namespace ExampleDbAbstraction.Repository {
         //This constructor takes in a data store as type List<Flight> and passes it to the parent class
         //of Repository<Flight>
         public FlightRepository(List<Flight> context) : base(context) {
+        }
+
+        /// <summary>
+        /// Returns all flights that contain the requested airport code in their route.
+        /// </summary>
+        /// <param name="routePoint">The requested airport code</param>
+        /// <returns></returns>
+        public IEnumerable<Flight> FindByRoutePoint(string routePoint) {
+            return Context.Where(f => f.Route.Contains(routePoint));
         }
 
         //Implements the GetTotalHours from IFlightRepository and returns the total hours...
