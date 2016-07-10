@@ -56,19 +56,18 @@ namespace ExampleDbAbstraction.Repository {
                 work.Aircraft.Add(new Aircraft {
                     Id = i + 1,
                     Model = aircraft[rand.Next(aircraft.Count)],
-                    TailNumber = TailNumberGenerator()
+                    TailNumber = TailNumberGenerator(rand)
                 });
             }
         }
 
-        private static string TailNumberGenerator() {
+        private static string TailNumberGenerator(Random randomNumberGenerator) {
 
-            var rand = new Random();
             var tailnumber = new StringBuilder();
             tailnumber.Append("N");
 
-            var numCharsInTailNumber = rand.Next(1, 5);
-            var numLettersInTailNumber = rand.Next(3);
+            var numCharsInTailNumber = randomNumberGenerator.Next(1, 5);
+            var numLettersInTailNumber = randomNumberGenerator.Next(2);
             if (numLettersInTailNumber >= numCharsInTailNumber) {
                 numLettersInTailNumber = numCharsInTailNumber - 1;
             }
@@ -76,7 +75,7 @@ namespace ExampleDbAbstraction.Repository {
 
             for (int i = 0; i <= numCharsInTailNumber; i++) {
 
-                var numToAppend = rand.Next(10);
+                var numToAppend = randomNumberGenerator.Next(10);
 
                 if (i == 0 && numToAppend == 0) {
                     numToAppend++;
@@ -84,7 +83,7 @@ namespace ExampleDbAbstraction.Repository {
                 tailnumber.Append(numToAppend.ToString());
 
                 if (i >= numCharsInTailNumber - (numLettersInTailNumber)) {
-                    var tailLetter = (char)('A' + rand.Next(26));
+                    var tailLetter = (char)('A' + randomNumberGenerator.Next(26));
                     if (tailLetter == 'O' || tailLetter == 'I') {
                         tailLetter = (char)(tailLetter + 1);
                     }
